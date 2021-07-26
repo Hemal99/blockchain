@@ -38,18 +38,21 @@ class DB{
         return $this;
     }
     public function insert($table,$fields=[]){
+    
        $fieldString = '';
        $valueString = '';
        $values = [];
        foreach($fields as $field =>$value){
-          $fieldString.='`'.$field.'`,';
-          $valueString.='?,';
+          $fieldString .='`'.$field.'`,';
+          $valueString .='?,';
           $values[]=$value;
        }
        $fieldString = rtrim($fieldString,',');
        $valueString = rtrim($valueString,',');
+     
 
        $sql="INSERT INTO {$table} ({$fieldString}) VALUES ({$valueString})";
+       
        if(!$this->query($sql,$values)->error()){
            return true;
        }
@@ -92,7 +95,14 @@ class DB{
         return $this->_lastInsertID;
     }
     public function get_columns($table){
-        return $this->query("SHOW COLUMNS FROM {$table}")->results();
+       
+
+        $arr =  $this->query("SHOW COLUMNS FROM {$table}")->results();
+        unset($arr['0']);
+        unset($arr['5']);
+       
+
+        return  $arr;
     }
     public function find($table,$params=[]){        
       if($this->_read($table,$params)){

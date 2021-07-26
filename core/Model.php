@@ -53,14 +53,18 @@ class Model{
 
      public function save(){
          $fields =[];
+       
          foreach($this->_columnNames as $column){
-             $fields[$column] = $this->column;
+          
+             $fields[$column] = $this->$column;
+            
          }
          //determine whether to update or insert
          if(property_exists($this,'id') && $this->id!=''){
           return $this->update($this->id,$fields);
          }
          else{
+            
              return $this->insert($fields);
          }
      }
@@ -77,13 +81,14 @@ class Model{
          if(!empty($params)){
              foreach($params as $key=> $val ){
               if(in_array($key,$this->_columnNames)){
-                  $this->$key = sanatize($val);
+                  $this->$key = santize($val);
               }
              }
          }
      }
      public function insert($fields){
-       if( !$empty($fields)) return false;
+      
+       if(empty($fields)) return false;
        return $this->_db->insert($this->_table,$fields);
      }
      public function delete($id =''){
@@ -104,5 +109,5 @@ class Model{
          return $this->_db->query($sql,$bind);
      }
      
-
+   
 }

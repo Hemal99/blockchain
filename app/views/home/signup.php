@@ -104,74 +104,54 @@
 						<!--begin::Signin-->
 						<div class="login-form login-form-signup">
 							<!--begin::Form-->
-							<form class="form" novalidate="novalidate" id="kt_login_signup_form"  action="<?=PROOT?>home/signup" method="POST">
+							<form class="form"  method="POST" action="<?=PROOT?>home/signup"  id="signup_form">
 								<!--begin: Wizard Step 1-->
 								<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 									<!--begin::Title-->
 									<div class="pb-10 pb-lg-15">
 										<h3 class="font-weight-bolder text-dark display5">Create Account</h3>
 										<div class="text-muted font-weight-bold font-size-h4">Already have an Account ?
-										<a href="custom/pages/login/login-3/signin.html" class="text-primary font-weight-bolder">Sign In</a></div>
+										<a href="<?=PROOT?>home/" class="text-primary font-weight-bolder">Sign In</a></div>
 									</div>
 									<!--begin::Title-->
 									<!--begin::Form Group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">First Name</label>
-										<input type="text" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6 <?php echo (!empty($data['fname_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['fname']; ?>" name="fname" placeholder="First Name" value="" />
-										<span class="invalid-feedback"><?php echo $data['fname_err']; ?></span>
+										<input type="text"  class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="fname" name="firstname" placeholder="First Name" value="" />
+									    <div id="error-text-f" class=fv-help-block></div>
 									</div>
 									<!--end::Form Group-->
 									<!--begin::Form Group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Last Name</label>
-										<input type="text" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6 <?php echo (!empty($data['lname_err'])) ? 'is-invalid' : ''; ?>" name="lname" placeholder="Last Name" value="" />
-										<span class="invalid-feedback"><?php echo $data['lname_err']; ?></span>
+										<input type="text"   class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="lname"name="lastname" placeholder="Last Name" value="" />
+									    <div id="error-text-l" class=fv-help-block></div>
 									</div>
 									<!--end::Form Group-->
 									<!--begin::Form Group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
-										<input type="email" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6 <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" name="email" placeholder="Email"  />
-										<span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
+										<input type="email" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="email" name="email" placeholder="Email"  />
+									    <div id="error-text-e" class=fv-help-block></div>
 									</div>
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Password</label>
-										<input type="password" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6 <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>" name="password" placeholder="Password" />
-										<span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
+										<input type="password"  class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="password" name="password" placeholder="Password" />
+									    <div id="error-text-p" class=fv-help-block></div>
 									</div>
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Confirm pasword</label>
-										<input type="password" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6 <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" name="confirm_password" placeholder="Confirm Password"  />
-										<span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
+										<input type="password"  class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="confirm-pw" name="confirm-pw" placeholder="Confirm Password"  />
+									    <div id="error-text-c" class=fv-help-block></div>
 									</div>
 									<!--end::Form Group-->
 								</div>
-								<div class="row justify-content-end">
-									<div class="col d-flex justify-content-between pt-3">
-									<button type="submit" value="Register" class="btn btn-primary font-weight-bolder font-size-h6 pl-8 pr-4 py-4 my-3">Submit
-									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<polygon points="0 0 24 0 24 24 0 24" />
-													<rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000)" x="7.5" y="7.5" width="2" height="9" rx="1" />
-													<path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-												</g>
-											</svg>
-									</button>
-									</div>
-									
-								</div>
-								
 								<!--end: Wizard Step 1-->
 								<!--begin: Wizard Step 2-->
-								
-								<!--end: Wizard Step 4-->
-								<!--begin: Wizard Actions-->
-								<div class="d-flex justify-content-between pt-3">
-									
+							
 									<div>
-										
-										<button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 pl-8 pr-4 py-4 my-3" data-wizard-type="action-submit">Submit
-										<span class="svg-icon svg-icon-md ml-1">
+										<button class="btn btn-primary font-weight-bolder font-size-h6 pl-5 pr-8 py-4 my-3"  type="submit" >Submit
+										<span class="svg-icon svg-icon-md ml-2">
 											<!--begin::Svg Icon | path:<?=PROOT?>assets/media/svg/icons/Navigation/Right-2.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -182,6 +162,7 @@
 											</svg>
 											<!--end::Svg Icon-->
 										</span></button>
+
 									</div>
 								</div>
 								<!--end: Wizard Actions-->
@@ -207,7 +188,67 @@
 		<script src="<?=PROOT?>assets/js/scripts.bundle.js"></script>
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
-		<script src="<?=PROOT?>assets/js/pages/custom/login/login-3.js"></script>
+		
 		<!--end::Page Scripts-->
+		<script>
+
+         //form and fields
+		  const form =document.getElementById('signup_form');
+		  const fname=document.getElementById('fname');
+		  const lname=document.getElementById('lname');
+		  const email=document.getElementById('email');
+		  const password =document.getElementById('password');
+		  //error fields
+		  const error_text_f=document.getElementById('error-text-f');
+		  const error_text_l=document.getElementById('error-text-l');
+		  const error_text_e=document.getElementById('error-text-e');
+		  const error_text_p=document.getElementById('error-text-p');
+		  const error_text_c=document.getElementById('error-text-c');
+		  
+		  const confirm_pw =document.getElementById('confirm-pw');
+          const error_id=[error_text_f,error_text_l,error_text_e,error_text_p,error_text_c];
+		  const fieldArr=[fname,lname,email,password,confirm_pw];
+		  const fieldNames=['First name','Last name','Email','Password'];
+
+		  form.addEventListener('submit',(e)=>{
+          console.log(e);
+			//empty validation
+			fieldNames.forEach((field,index)=>{
+				error_id[index].style.color='red';
+				if(fieldArr[index].value===''){
+					e.preventDefault();
+					error_id[index].innerText=field+ " is required";
+				}
+         
+			});
+
+			if(fname.value!=''){
+				
+				if(/[^a-zA-Z\-\/]/.test(fname.value)){
+					e.preventDefault();
+					error_text_f.innerText="Cannot contain numbers";
+				}
+
+			}
+			if(lname.value!=''){
+				
+				if(/[^a-zA-Z\-\/]/.test(lname.value)){
+					e.preventDefault();
+					error_text_l.innerText="Cannot contain numbers";
+				}
+
+			}
+			if(password.value!==confirm_pw.value){
+				e.preventDefault();
+				error_text_p.innerText=" password not matched"
+			}
+			// if(password.value.length<8 || ){}
+
+          
+			
+           
+             
+		  })
+		</script>
 	</body>
 <?php $this->end();?>

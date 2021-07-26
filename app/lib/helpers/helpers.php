@@ -1,4 +1,4 @@
- <?php
+<?php
  function dnd($data){
      echo '<pre>';
      var_dump($data);
@@ -8,4 +8,81 @@
 
  function santize($unsantizeVal){
    return htmlentities($unsantizeVal,ENT_QUOTES,'UTF-8');
+ }
+
+ function posted_values($values){
+   $clean_array=[];
+   foreach($values as $key=>$val){
+       $clean_array[$key]=santize($val);
+   }
+   return $clean_array;
+ }
+ function validateSignup($items){
+  $error=[];
+  $rules=['firstname'=>[
+           'display'=>'First name',
+           'required'=>true,
+           'max'=>100
+          ],
+          'lastname'=>[
+            'display'=>'Last name ',
+             'required'=>true,
+             'max'=>100
+          ],
+          'email'=>[
+            'display'=> 'Email address',
+            'required'=>true,
+            'max'=>150,
+            'valid_email'=>true
+          ] ,
+          'password'=>[
+            'display'=>'Password',
+            'required'=>true,
+            'min'=>8
+          ],
+          'confirm-pw'=>[
+            'display'=>'Confirm password',
+            'required'=>true,
+             'matches'=>'pw'
+          ],
+    
+        ];
+        foreach($rules as $item =>$rulez){
+           $display = $rulez['display'];
+           foreach($rulez as $key =>$val ){
+             $input =$items[$item];
+            if(empty($input)){
+              
+              $error[]="{$display} is required";
+
+            }
+            else if(!empty($input)){
+              switch($key){
+                 case 'max':
+                  if(strlen($input)>$val){
+                    $error[]="{$display} must be {$val} characters.";
+                  }
+                  break;
+
+                  case 'min':
+                    if(strlen($input)<$val){
+                    $error[]="{$display} must be {$val} characters.";
+                    }
+                  break;
+
+                  case 'valid_email':
+                  if(!filter_var($input,FILTER_VALIDATE_EMAIL)){
+                    $error[] ="{$display} must be a valid email";
+                  }
+                  break;
+                  
+              }
+            }
+           }
+        }
+        if(empty($error)){
+          return true;
+        }
+        return $error;
+
  }
