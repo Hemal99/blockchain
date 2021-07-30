@@ -95,14 +95,21 @@ class DB{
         return $this->_lastInsertID;
     }
     public function get_columns($table){
-       
 
-        $arr =  $this->query("SHOW COLUMNS FROM {$table}")->results();
-        unset($arr['0']);
-        unset($arr['5']);
-       
+        $columns =  $this->query("SHOW COLUMNS FROM {$table}")->results();
+        $columns_filtered = array_filter($columns, function($column){ 
+            if($column->Field == "id" || $column->Field == "created_at")
+            { 
+                return false; 
+            }
+            else{ 
+                return $column; 
+            }
+         });
 
-        return  $arr;
+      
+
+        return  $columns_filtered;
     }
     public function find($table,$params=[]){        
       if($this->_read($table,$params)){

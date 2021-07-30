@@ -131,7 +131,7 @@
 									<!--begin::Form Group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
-										<input type="email" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="email" name="email" placeholder="Email"  />
+										<input type="email" class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="email" name="email" placeholder="Email" onkeyup="emailVerify(this.value)"  />
 									    <div id="error-text-e" class=fv-help-block></div>
 									</div>
 									<div class="form-group">
@@ -209,9 +209,10 @@
           const error_id=[error_text_f,error_text_l,error_text_e,error_text_p,error_text_c];
 		  const fieldArr=[fname,lname,email,password,confirm_pw];
 		  const fieldNames=['First name','Last name','Email','Password'];
+		  let emailCheck='';
 
 		  form.addEventListener('submit',(e)=>{
-          console.log(e);
+
 			//empty validation
 			fieldNames.forEach((field,index)=>{
 				error_id[index].style.color='red';
@@ -243,12 +244,63 @@
 				error_text_p.innerText=" password not matched"
 			}
 			// if(password.value.length<8 || ){}
+			if(password.value!==''){
+				if(!(/^(?=.*\d)(?=.*[A-Z])(?!.*[^a-zA-Z0-9@#$^+=])(.{8,15})$/.test(password.value))){
+					e.preventDefault();
+					error_text_p.innerText="password should contain 8 characters at least one special Character and Capital letter and at least one number";
+				}
 
-          
-			
+			}
+		
+        	if(emailCheck){
+				e.preventDefault();
+		}
+  
+		   });
+
+
+	
+
+		const emailVerify=(value)=>{
+		
+        let request;
+        if (window.XMLHttpRequest) {
+            //New browsers.
+            request = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {
+            //Old IE Browsers.
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if (request != null) {
+            let url = "<?=PROOT?>home/verify/";
+            request.open("GET", url + value, true);
+		
            
-             
-		  })
+            request.setRequestHeader("Content-Type", "application/json");
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                   if(this.responseText.trim()!==""){
+					   emailCheck= this.responseText.trim();
+ 							//Email not available.
+ 						error_text_e.style.color = "red";
+                        error_text_e.innerText = "Email is NOT available";
+						
+				   }else{
+						emailCheck='';
+						error_text_e.style.color = "";
+                        error_text_e.innerText = "";
+				   }
+                       
+                    
+                }
+            };
+            request.send();
+			return '';
+        }
+    }
+ 
+			
 		</script>
 	</body>
 <?php $this->end();?>

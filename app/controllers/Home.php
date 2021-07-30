@@ -47,4 +47,11 @@ class Home extends Controller{
     $this->view->render('home/forgotpw');
     }
 
+    public function verifyAction($req){
+       
+        if($req!=null){
+           echo $this->UsersModel->findByEmail($req)->email;
+        }
+    }
+
 }
