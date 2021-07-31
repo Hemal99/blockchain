@@ -1,7 +1,14 @@
 <?php
 class Router{
+    private static $controller_str;
+    public static function getRouteName(){
+       return self::$controller_str;
+    }
+
+
     public static function route($url){
         //url
+        
          
          //controller
          $controller = (isset($url[0]) && $url[0]!='') ? ucwords($url[0]) : DEFAULT_CONTROLLER;

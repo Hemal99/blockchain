@@ -1,7 +1,7 @@
 <?php
 class View {
     protected $_head,$_body,$siteTitle,$_outputBuffer,$_layout=DEFAULT_LAYOUT;
-
+    protected $_inputObj;
     public function __construct(){
          
     }
@@ -60,4 +60,14 @@ class View {
    public function setLayout($path){
        $this->_layout=$path;
    }
+
+   public function setInput($inputObj){
+    if(isset($inputObj)){
+        $this->_inputObj=$inputObj;
+    }
+   }
+   
+   public function getInput(){
+    return $this->_inputObj;
+    }
 }

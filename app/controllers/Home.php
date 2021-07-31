@@ -18,7 +18,7 @@ class Home extends Controller{
            $user = $this->UsersModel->findByEmail($_POST['email']);
            
            if(($user->email !=null) && (password_verify($_POST['password'],$user->password))){
-   
+                $user->login(true);
                Router::redirect('dashboard');
            }
         }
