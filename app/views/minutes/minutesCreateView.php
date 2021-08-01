@@ -256,19 +256,20 @@
                                                         <div class="card card-custom  col-xl-12 col-lg-3">
                                                             <div class="card-header">
                                                                 <h3 class="card-title">
-                                                                   Discussion
+                                                                   Dicussion
                                                                 </h3>
                                                             </div>
                                                             <!-- <div class="card-body">
-                                                                <div id="kt_quil_2" style="height: 325px">
-																<textarea name='discussion' form ='form1'>Hellooo</textarea>
+                                                                <div id="kt_quil_3" style="height: 325px">
+																<textarea name='action' form='form1'></textarea>
                                                                 </div>
                                                             </div> -->
-															<textarea name='discussion ' form="form1" rows="4"></textarea>
+															<textarea name='discussion' form="form1" rows="4"></textarea>
+
                                                         </div>
-														
 
                                                     </div>
+                                                 
 
                                                     <div class= "row">
                                                         <div class="card card-custom  col-xl-12 col-lg-3">

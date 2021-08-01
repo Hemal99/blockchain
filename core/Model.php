@@ -12,10 +12,18 @@ class Model{
      protected function _setTableColumns(){
          $columns =$this->get_columns();
          foreach($columns as $column){
+             
+
              $columnName =$column->Field;
-             $this->_columnNames[] =$columnName;
+             if($columnName!=="id"){
+                $this->_columnNames[] =$columnName;
+             }
+           
+            
+            
              $this->{$columnName}=null;
          }
+       
      }
      
      protected function get_columns(){
@@ -84,6 +92,7 @@ class Model{
                   $this->$key = santize($val);
               }
              }
+             
          }
      }
      public function insert($fields){

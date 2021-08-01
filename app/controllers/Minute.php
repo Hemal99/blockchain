@@ -23,7 +23,7 @@ class Minute extends Controller{
    }
 
     public function addMinuteAction(){
-        $input= $this->MembersModel->getAllMembers();   
+      $input= $this->MembersModel->getAllMembers();   
       $this->view->setInput($input);
       $this->view->render('minutes/minutesCreateView');
 
@@ -36,9 +36,8 @@ class Minute extends Controller{
 
             $_POST['name'] = $q1;
             $_POST['user_id']= Users::currentUser()->id;
-   
-           $this->MinutesModel->addNewMinutes($_POST);
-           Router::redirect('minute');
+            $this->MinutesModel->addNewMinutes($_POST);
+            Router::redirect('minute');
        }
    }
    
