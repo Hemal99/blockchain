@@ -14,6 +14,9 @@ class Minutes extends Model{
         return $this->findFirst(['conditions' => 'id= ?','bind'=>[$id]]);
 
     }
+
+    
+
     public function getAllMinutes(){
         return $this->getResults();
     }

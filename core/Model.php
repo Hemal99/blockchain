@@ -12,17 +12,15 @@ class Model{
      protected function _setTableColumns(){
          $columns =$this->get_columns();
          foreach($columns as $column){
-             
-
              $columnName =$column->Field;
              if($columnName!=="id"){
                 $this->_columnNames[] =$columnName;
              }
+            
            
-            
-            
              $this->{$columnName}=null;
          }
+
        
      }
      
@@ -47,6 +45,7 @@ class Model{
      }
 
      public function findFirst ($params =[]){
+        
          $resultQuery = $this->_db->findFirst($this->_table,$params);
          $result = new $this->_modelName($this->_table);
         if($resultQuery) $result->populateObjData($resultQuery);

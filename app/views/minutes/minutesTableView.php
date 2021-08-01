@@ -189,13 +189,14 @@
                                                         <tr class="text-left">
                                                            
                                                             <th class="pl-0" style="min-width: 120px">Minute Title</th>
-                                                            <th style="min-width: 110px">Name</th>
+                                                            
                                                             <th style="min-width: 110px">
                                                                 Agenda
                                                             </th>
                                                             <th style="min-width: 120px">Discussion</th>
                                                             <th style="min-width: 120px">Action</th>
                                                             <th class="pr-0 text-left" style="min-width: 150px">Date</th>
+															<th style="min-width: 110px">Participants</th>
                                                         
                                                         </tr>
                                                     </thead>
@@ -206,17 +207,35 @@
                                                           ?>
                                                        <?php 
                                                        $res=$this->getInput();
-                                                   
+														
                                                        foreach($res as $row =>$val) :?>
                                                         <tr>
                                                             <td><?php echo $val->title?></td>
-                                                            <td><?php echo $val->name?></td>
-                                                            <td><?php echo $val->agenda?></td> 
+															<td><?php echo $val->agenda?></td> 
                                                             <td><?php echo $val->discussion?></td>
                                                             <td><?php echo $val->action?></td>
                                                             <td><?php echo $val->date?></td>
+															<?php 
+																	$nameArray=[];
+																	$idArray =explode(',',$val->name);
+																	foreach($idArray as $key => $val)
+																	{
+																	$user= new Users();
+																	$newval=$user->findByID($val);
+																	$nameArray[]=$newval->firstname;
+																	};
+																	$nameString=implode(',',$nameArray);
+															
+															?>
+
+                                                            <td><?php echo $nameString;?></td>
+															
+                                                           
                                                         </tr>
-                                                       <?php endforeach;?>
+                                                     
+															
+
+													   <?php endforeach; ?>
                                                       
                                                        <?php endif;?>
                                                     </tbody>
