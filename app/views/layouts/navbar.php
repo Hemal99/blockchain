@@ -50,14 +50,14 @@
 											
 											</li>
 											<li class="menu-item menu-item-submenu menu-item-<?php echo "{$val_3}"?> data-menu-toggle="click" aria-haspopup="true">
-												<a href="<?=PROOT?>minutes" class="menu-link ">
+												<a href="<?=PROOT?>member" class="menu-link ">
 													<span class="menu-text">Team Mates</span>
 													<span class="menu-desc"></span>
 													<i class="menu-arrow"></i>
 												</a>
 											</li>
 											<li class="menu-item menu-item-submenu menu-item-<?php echo "{$val_3}"?> data-menu-toggle="click" aria-haspopup="true">
-												<a href="<?=PROOT?>minutes" class="menu-link ">
+												<a href="<?=PROOT?>minute" class="menu-link ">
 													<span class="menu-text">Minutes</span>
 													<span class="menu-desc"></span>
 													<i class="menu-arrow"></i>

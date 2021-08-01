@@ -12,7 +12,7 @@ class Cookie {
     public static function get($name){
         return $_COOKIE[$name];
     }
-    public static function exists($name){
+    public static function exsits($name){
         return isset($_COOKIE[$name]);
     }
 }

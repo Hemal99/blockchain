@@ -23,5 +23,14 @@ class Account extends Controller{
     $this->view->render('account/changePassword');
    }
 
+   public function updateFieldsAction(){
+   
+    if($_POST){
+     
+     $this->user->updateDetails($_POST);
+     Router::redirect('account');
+    }
+}
+
 
 }

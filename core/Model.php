@@ -108,6 +108,20 @@ class Model{
      public function query ($sql,$bind=[]){
          return $this->_db->query($sql,$bind);
      }
+
+     public function getResults(){
+        return $this->_db->find($this->_table,[]);
+    }
+
+    public function tableJoin($params=[]){
+      
+        $resultQuery=$this->_db->joinQuery($this->_table,$params);
+        $result = new $this->_modelName($this->_table);
+      
+        
+        return $resultQuery;
+   }
+
      
    
 }

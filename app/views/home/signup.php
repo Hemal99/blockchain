@@ -140,7 +140,7 @@
 									    <div id="error-text-p" class=fv-help-block></div>
 									</div>
 									<div class="form-group">
-										<label class="font-size-h6 font-weight-bolder text-dark">Confirm pasword</label>
+										<label class="font-size-h6 font-weight-bolder text-dark">Confirm password</label>
 										<input type="password"  class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" id="confirm-pw" name="confirm-pw" placeholder="Confirm Password"  />
 									    <div id="error-text-c" class=fv-help-block></div>
 									</div>

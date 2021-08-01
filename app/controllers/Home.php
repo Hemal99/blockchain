@@ -54,4 +54,10 @@ class Home extends Controller{
         }
     }
 
+    public function logoutAction(){
+        Users::currentUser()->logout();
+        Router::redirect('');  
+    }
+
+
 }

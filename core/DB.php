@@ -22,10 +22,12 @@ class DB{
         $this->_error=false;
         if($this->_query=$this->_pdo->prepare($sql)){
             $x=1;
-            if(count($params)){
-                foreach($params as $param){
-                    $this->_query->bindValue($x,$param);
-                    $x++;
+            if(!empty($params)){
+                if(count($params)){
+                    foreach($params as $param){
+                        $this->_query->bindValue($x,$param);
+                        $x++;
+                    }
                 }
             }
         }
@@ -38,21 +40,18 @@ class DB{
         return $this;
     }
     public function insert($table,$fields=[]){
-    
        $fieldString = '';
        $valueString = '';
        $values = [];
        foreach($fields as $field =>$value){
-          $fieldString .='`'.$field.'`,';
-          $valueString .='?,';
+          $fieldString.='`'.$field.'`,';
+          $valueString.='?,';
           $values[]=$value;
        }
        $fieldString = rtrim($fieldString,',');
        $valueString = rtrim($valueString,',');
-     
 
        $sql="INSERT INTO {$table} ({$fieldString}) VALUES ({$valueString})";
-       
        if(!$this->query($sql,$values)->error()){
            return true;
        }
@@ -61,6 +60,7 @@ class DB{
     public function error(){
         return $this->_error;
     }
+
     public function update($table,$id,$fields=[]){
         $fieldString='';
         $values=[];
@@ -95,21 +95,7 @@ class DB{
         return $this->_lastInsertID;
     }
     public function get_columns($table){
-
-        $columns =  $this->query("SHOW COLUMNS FROM {$table}")->results();
-        $columns_filtered = array_filter($columns, function($column){ 
-            if($column->Field == "id" || $column->Field == "created_at")
-            { 
-                return false; 
-            }
-            else{ 
-                return $column; 
-            }
-         });
-
-      
-
-        return  $columns_filtered;
+        return $this->query("SHOW COLUMNS FROM {$table}")->results();
     }
     public function find($table,$params=[]){        
       if($this->_read($table,$params)){
@@ -122,6 +108,7 @@ class DB{
     public function first(){
        return (!empty($this->_result)) ? $this->_result[0] : [];
     }
+    
 
     public function findFirst($table,$params=[]){        
         if($this->_read($table,$params)){
@@ -129,11 +116,19 @@ class DB{
         }
         return false;
     }
+    public function joinQuery($table,$params=[]){
+       if($this->_read($table,$params)){
+           return $this->results();
+       }
+       return false;
+    }
     protected function _read($table,$params){
         $conditionString = '';
         $bind ='';
         $order='';
         $limit='';
+        $join_condition='';
+       
         // conditions
         if(isset($params['conditions'])){
             if(is_array($params['conditions'])){
@@ -164,9 +159,13 @@ class DB{
         if(array_key_exists('limit',$params)){
             $limit = 'LIMIT '.$params['limit'];
         }
-      
-        $sql="SELECT * FROM {$table} {$conditionString} {$order} {$limit}";
        
+        if(array_key_exists('join_condition',$params)){
+           $join_condition =''.$params['join_condition'];
+        }
+      
+        $sql="SELECT * FROM {$table} {$join_condition} {$conditionString} {$order} {$limit}";
+         
         if($this->query($sql,$bind)){
             if(empty($this->_result)) return false;
             return true;

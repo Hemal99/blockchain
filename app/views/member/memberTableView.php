@@ -1,5 +1,5 @@
 
-<?php $this->setSiteTitle('Minutes')?>
+<?php $this->setSiteTitle('Member')?>
 <?php $this->start('body');?>
 
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
@@ -167,137 +167,69 @@
 						</div>
 						<!--end::Modal-->
 						<!--begin::Entry-->
-						<div class="d-flex flex-column-fluid">
-							<!--begin::Container-->
-							<div class="container">
-								<!--begin::Profile Account Information-->
-								<div class="d-flex flex-row">
-									
-									<div class="flex-row-fluid ml-lg-8">
-										<!--begin::Card-->
-										<div class="card card-custom">
-											<!--begin::Header-->
-											<div class="card-header py-3">
-												<div class="card-title align-items-start flex-column">
-													<h3 class="card-label font-weight-bolder text-dark">Create Minutes</h3>
-												</div>
-												
-											</div>
-											<!--end::Header-->
-											<!--begin::Form-->
-											<form class="form" method="POST" action="<?=PROOT?>project/insertField">
-												<div class="card-body">
-													<!--begin::Heading-->
-													
-													<!--begin::Form Group-->
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                        <div class="form-group row">
-                                                                <label class="col-xl-12 col-lg-3 col-form-label">Title</label>
-                                                                <div class="col-lg-12 col-xl-12">
-                                                                        <input class="form-control form-control-lg form-control-solid" required  type="text" name='p_name'  />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                        <div class="container">
+                            <div class="card card-custom gutter-b">
+                                        <!--begin::Header-->
+                                        <div class="card-header border-0 py-5">
+                                            <h3 class="card-title align-items-start flex-column">
+                                                <span class="card-label font-weight-bolder text-dark">Team Members</span>
+                                                
+                                            </h3>
+                                            <div class="card-toolbar">
+                                                <a href="<?=PROOT?>Customer/addMember" class="btn btn-info font-weight-bolder font-size-sm">Add Members</a>
+                                            </div>
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div class="card-body py-0">
+                                            <!--begin::Table-->
+                                            <div class="table-responsive">
+                                                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
+                                                    <thead>
+                                                        <tr class="text-left">
+                                                           
+                                                            <th class="pl-0" style="min-width: 120px">Name</th>
+                                                            <th style="min-width: 110px">Email</th>
+                                    
+                                                            <!-- <th style="min-width: 120px">Company</th>
+                                                            <th style="min-width: 120px">Country</th> -->
+                                                            <!-- <th class="pr-0 text-left" style="min-width: 150px">Address</th>
+                                                            <th class="pr-0 text-left" style="min-width: 100px">Website</th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <?php $res=$this->getInput();
+                                                         
+                                                          if(!empty($res)) :
+                                                          ?>
+                                                       <?php 
+                                                       $res=$this->getInput();
                                                    
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                        <div class="form-group row">
-                                                                <label class="col-xl-12 col-lg-3 col-form-label">Team</label>
-                                                                <div class="col-lg-12 col-xl-6">
-                                                                    <select  type="number" name='client_id' class="form-control form-control-lg form-control-solid">
-																	<option value="">Select</option>
-																		<?php $res = $this->getInput();
-																		  foreach($res as $val):?>
-                                                                                   <option value="<?php echo $val->id?>"><?php echo $val->first_name.' '.$val->last_name?></option>
-																		<?php endforeach;?>
-                                                                    </select>
-                                                                </div>
-																
-																<div class="col-xl-6">
-																	<a href="<?=PROOT?>customer/addCustomer/" class='btn btn-info'> Add Member</a>
-																</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class= "row">
-                                                        <div class="card card-custom  col-xl-12 col-lg-3">
-                                                            <div class="card-header">
-                                                                <h3 class="card-title">
-                                                                   Agenda
-                                                                </h3>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div id="kt_quil_1" style="height: 325px">
-                                                                    Compose a message
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                       foreach($res as $row =>$val) :?>
+                                                        <tr>
+                                                         
+                                                            <td><?php echo $val->firstname.' '.$val->lastname?></td>
+                                                            <td><?php echo $val->email?></td>
+                                                            
+                                                            
 
-                                                    <div class= "row">
-                                                        <div class="card card-custom  col-xl-12 col-lg-3">
-                                                            <div class="card-header">
-                                                                <h3 class="card-title">
-                                                                   Discussion
-                                                                </h3>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div id="kt_quil_2" style="height: 325px">
-                                                                    Compose a message
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class= "row">
-                                                        <div class="card card-custom  col-xl-12 col-lg-3">
-                                                            <div class="card-header">
-                                                                <h3 class="card-title">
-                                                                   Action
-                                                                </h3>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div id="kt_quil_3" style="height: 325px">
-                                                                    Compose a message
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                 
-                                                    
-                                                   
-                                                    <div class="row">
-                                                        <div class="col-xl-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-xl-12 col-lg-3 col-form-label">Start Date</label>
-                                                                <div class="col-lg-12 col-xl-12">
-                                                                        <input class="form-control form-control-lg form-control-solid" required  type="date" name='start_date'  />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                   
-													<input  value="Create Minutes" type="submit"  class="btn btn-success mr-2" />
-													
-												</div>
-											</form>
-											<!--end::Form-->
-										</div>
-										<!--end::Card-->
-									</div>
-									<!--end::Content-->
-								</div>
-								<!--end::Profile Account Information-->
-							</div>
-							<!--end::Container-->
-						</div>
+                                                        </tr>
+                                                       <?php endforeach;?>
+                                                      
+                                                       <?php endif;?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--end::Table-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                        </div>
 						<!--end::Entry-->
-					</div>
+				    	</div>
 					<!--end::Content-->
 					<!--begin::Footer-->
-					<?php include(ROOT.DS.'app'.DS.'views'.DS.'layouts'.DS.'footer.php') ?>
+				     	<?php include(ROOT.DS.'app'.DS.'views'.DS.'layouts'.DS.'aside.php') ?>
 					<!--end::Footer-->
 				</div>
 				<!--end::Wrapper-->
@@ -521,7 +453,7 @@
 						<i class="symbol-badge bg-success"></i>
 					</div>
 					<div class="d-flex flex-column">
-						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?=$this->getInput()->first_name?> <?=$this->getInput()->last_name?></a>
+						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"> <?=Users::currentUser()->firstname?></a>
 						<div class="text-muted mt-1">Application Developer</div>
 						<div class="navi mt-2">
 							<a href="#" class="navi-item">
@@ -539,7 +471,7 @@
 											<!--end::Svg Icon-->
 										</span>
 									</span>
-									<span class="navi-text text-muted text-hover-primary"><?=$this->getInput()->email?></span>
+									<span class="navi-text text-muted text-hover-primary"><?=Users::currentUser()->email?></span>
 								</span>
 							</a>
 							<a href="<?=PROOT?>/home/logout" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
@@ -1906,7 +1838,6 @@
 			<!--end::Content-->
 		</div>
 		<!--end::Demo Panel-->
-      
 		<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
 		<!--begin::Global Config(global config for global JS scripts)-->
 		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#8950FC", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
@@ -1915,12 +1846,10 @@
 		<script src="<?=PROOT?>assets/plugins/global/plugins.bundle.js"></script>
 		<script src="<?=PROOT?>assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 		<script src="<?=PROOT?>assets/js/scripts.bundle.js"></script>
-        
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="<?=PROOT?>assets/js/pages/widgets.js"></script>
 		<script src="<?=PROOT?>assets/js/pages/custom/profile/profile.js"></script>
-        <script src="<?=PROOT?>assets/js/pages/crud/forms/editors/quill.js"></script>
 		<!--end::Page Scripts-->
 	</body>
 

@@ -1,11 +1,11 @@
 <?php
-class Minutes extends Model{
+class Members extends Model{
     public function __construct(){
-        $table='minutes';
+        $table='users';
         parent::__construct($table);
     }
 
-    public function addNewMinutes($params){
+    public function addNewMember($params){
        $this->assign($params);
        $this->save();
     }
@@ -14,13 +14,8 @@ class Minutes extends Model{
         return $this->findFirst(['conditions' => 'id= ?','bind'=>[$id]]);
 
     }
-    public function getAllMinutes(){
+    public function getAllMembers(){
         return $this->getResults();
     }
-
-    public function joinUser(){
-        return $this->tableJoin(['join_condition'=>' INNER JOIN users ON user.id=minutes.user_id ']);
-
-    } 
 
 }

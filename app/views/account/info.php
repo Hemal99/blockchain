@@ -478,7 +478,7 @@
 														<label class="col-xl-3 col-lg-3 col-form-label">Username</label>
 														<div class="col-lg-9 col-xl-6">
 															
-																<input class="form-control form-control-lg form-control-solid" type="text" name='user_name' value="<?=$this->getInput()->firstname?>" />
+																<input class="form-control form-control-lg form-control-solid" type="text" name='user_name' value="<?=$name =($this->getInput()->user_name !=null) ?  $this->getInput()->user_name :''?>" />
 															
 														</div>
 													</div>
@@ -762,7 +762,7 @@
 						<i class="symbol-badge bg-success"></i>
 					</div>
 					<div class="d-flex flex-column">
-						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?=$this->getInput()->first_name?> <?=$this->getInput()->last_name?></a>
+						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?=$this->getInput()->firstname?> <?=$this->getInput()->lastname?></a>
 						<div class="text-muted mt-1">Application Developer</div>
 						<div class="navi mt-2">
 							<a href="#" class="navi-item">

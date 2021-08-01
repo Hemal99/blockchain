@@ -60,6 +60,11 @@ class Users extends Model{
         $this->save();
     }
 
+    public function updateDetails($params){
+        $this->assign($params);
+        $this->save();
+    }
+
     public function logout()
     {
         
