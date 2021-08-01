@@ -175,9 +175,9 @@
                                                 <span class="card-label font-weight-bolder text-dark">Team Members</span>
                                                 
                                             </h3>
-                                            <div class="card-toolbar">
+                                            <!-- <div class="card-toolbar">
                                                 <a href="<?=PROOT?>Customer/addMember" class="btn btn-info font-weight-bolder font-size-sm">Add Members</a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <!--end::Header-->
                                         <!--begin::Body-->

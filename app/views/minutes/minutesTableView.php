@@ -227,10 +227,7 @@
 																	$nameString=implode(',',$nameArray);
 															
 															?>
-
-                                                            <td><?php echo $nameString;?></td>
-															
-                                                           
+                                                            <td><?php echo $nameString;?></td> 
                                                         </tr>
                                                      
 															
