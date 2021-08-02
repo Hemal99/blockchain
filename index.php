@@ -19,6 +19,9 @@ function autoload($className){
     elseif(file_exists(ROOT.DS.'app'.DS.'models'.DS.$className.'.php')){
         require_once(ROOT.DS.'app'.DS.'models'.DS.$className.'.php');
     }
+    elseif(file_exists(ROOT.DS.'app'.DS.'lib'.DS.'helpers'.DS.$className.'.php')){
+        require_once(ROOT.DS.'app'.DS.'lib'.DS.'helpers'.DS.$className.'.php');
+    }
 }
 
 spl_autoload_register('autoload');

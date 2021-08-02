@@ -150,7 +150,7 @@
 								<!--begin: Wizard Step 2-->
 							
 									<div>
-										<button class="btn btn-primary font-weight-bolder font-size-h6 pl-5 pr-8 py-4 my-3"  type="submit" >Submit
+										<button class="btn btn-primary font-weight-bolder font-size-h6 pl-5 pr-8 py-4 my-3"  type="submit" id="kt_sweetalert_demo_4" >Submit
 										<span class="svg-icon svg-icon-md ml-2">
 											<!--begin::Svg Icon | path:<?=PROOT?>assets/media/svg/icons/Navigation/Right-2.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -186,6 +186,7 @@
 		<script src="<?=PROOT?>assets/plugins/global/plugins.bundle.js"></script>
 		<script src="<?=PROOT?>assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 		<script src="<?=PROOT?>assets/js/scripts.bundle.js"></script>
+		<script src="<?=PROOT?>assets/js/features/miscellaneous/sweetalert2.js"></script>
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
 		
@@ -254,6 +255,21 @@
 		
         	if(emailCheck){
 				e.preventDefault();
+		}
+
+		if(error_text_f.innerText!='' && error_text_l.innerText !='' && error_text_e.innerText != '' && error_text_p !='' && error_text_c != ''){
+				$("#kt_sweetalert_demo_4").click(function (e) {
+				Swal.fire({
+				title: "Successfully Registered!",
+				text: "",
+				icon: "success",
+				buttonsStyling: false,
+				confirmButtonText: "Confirm me!",
+				customClass: {
+				confirmButton: "btn btn-primary"
+				}
+				});
+				});
 		}
   
 		   });

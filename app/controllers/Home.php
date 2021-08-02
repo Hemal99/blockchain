@@ -27,6 +27,7 @@ class Home extends Controller{
 
 
     public function signupAction(){
+
         if($_POST){
             $user=$this->UsersModel->findByEmail($_POST['email']);
            
@@ -43,6 +44,7 @@ class Home extends Controller{
        
     }
     public function forgotAction(){
+        
     //forgot password action
     $this->view->render('home/forgotpw');
     }

@@ -1,4 +1,4 @@
-<?php
+ <?php
  function dnd($data){
      echo '<pre>';
      var_dump($data);
@@ -17,14 +17,15 @@
    }
    return $clean_array;
  }
+
  function validateSignup($items){
   $error=[];
-  $rules=['firstname'=>[
+  $rules=['first_name'=>[
            'display'=>'First name',
            'required'=>true,
            'max'=>100
           ],
-          'lastname'=>[
+          'last_name'=>[
             'display'=>'Last name ',
              'required'=>true,
              'max'=>100
@@ -84,5 +85,18 @@
           return true;
         }
         return $error;
+ }
+
+ function dueCalculate($date){
+   date_default_timezone_set(Users_::currentUser()->timezone);
+   $today = time();
+   if($date !=''){
+     $input_date = strtotime($date);
+     $date_diff =$input_date-$today;
+       return round($date_diff/(60*60*24));
+       return false;
+   }
+   return false;
 
  }
+
